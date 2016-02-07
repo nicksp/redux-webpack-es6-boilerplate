@@ -1,7 +1,7 @@
 {
   "name": "redux-webpack-es6-boilerplate",
   "description": "A starter project for modern React apps with Redux",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Nick S. Plekhanov <nick.plekhanov@gmail.com>",
   "license": "MIT",
   "keywords": [
