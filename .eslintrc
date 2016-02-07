@@ -3,6 +3,10 @@
 
   "extends": "eslint:recommended",
 
+  plugins: [
+    "react"
+  ],
+
   "env": {
     "browser": true,
     "node": true,
