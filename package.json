@@ -21,7 +21,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --host 127.0.0.1",
     "build": "webpack",
-    "lint": "eslint src/js/**.js"
+    "lint": "eslint src/js/**",
+    "jscs": "jscs src/js/"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
@@ -33,6 +34,7 @@
     "copy-webpack-plugin": "^0.3.3",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.16.1",
+    "jscs": "^2.9.0",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   },
