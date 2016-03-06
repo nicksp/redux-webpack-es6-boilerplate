@@ -3,11 +3,11 @@
 
   "extends": "eslint:recommended",
 
-  plugins: [
+  "plugins": [
     "react"
   ],
 
-  globals: {
+  "globals": {
     define: true
   },
 
