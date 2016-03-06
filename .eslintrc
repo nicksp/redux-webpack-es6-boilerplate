@@ -3,7 +3,7 @@
 
   "extends": "eslint:recommended",
 
-  plugins: [
+  "plugins": [
     "react"
   ],
 
