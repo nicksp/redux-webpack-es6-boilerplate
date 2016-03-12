@@ -18,7 +18,7 @@ The provided boilerplate enables client-side ES6 via the following technologies:
 ### Installation
 
 ```
-$ git clone $ https://github.com/nicksp/redux-webpack-es6-boilerplate.git app-name
+$ git clone https://github.com/nicksp/redux-webpack-es6-boilerplate.git app-name
 $ cd app-name
 $ npm i
 ```
