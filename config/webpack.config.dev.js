@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 // App files location
 const PATHS = {
@@ -23,7 +24,7 @@ const plugins = [
 const sassLoaders = [
   'style-loader',
   'css-loader?sourceMap',
-  'autoprefixer-loader',
+  'postcss-loader',
   'sass-loader?outputStyle=expanded'
 ];
 
@@ -59,7 +60,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!autoprefixer-loader'
+        loader: 'style-loader!css-loader!postcss-loader'
       },
       // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
@@ -69,6 +70,11 @@ module.exports = {
     ]
   },
   plugins: plugins,
+  postcss: function () {
+    return [autoprefixer({
+      browsers: ['last 2 versions']
+    })];
+  },
   devServer: {
     contentBase: path.resolve(__dirname, '../src'),
     port: 3000
