@@ -29,7 +29,7 @@
     "build": "SET NODE_ENV=production& NODE_ENV=production& webpack -p --config ./config/webpack.config.prod.js --progress",
     "lint": "eslint config src/js/**/*.js",
     "jscs": "jscs src/js/",
-    "test": "mocha --compilers js:babel-core/register --require ./test/unit/testHelper.js -- recursive ./test/unit",
+    "test": "mocha --compilers js:babel-core/register,css:./test/unit/cssNullCompiler.js --require ./test/unit/testHelper.js --recursive ./test/unit",
     "test:watch": "npm run test -- --watch"
   },
   "devDependencies": {
@@ -69,6 +69,7 @@
   "dependencies": {
     "autoprefixer": "6.3.4",
     "classnames": "2.2.3",
+    "history": "2.0.1",
     "lodash": "4.6.1",
     "react": "0.14.7",
     "react-dom": "0.14.7",
