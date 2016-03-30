@@ -12,6 +12,8 @@ The provided boilerplate enables client-side ES6 via the following technologies:
 - [Redux DevTools](https://github.com/gaearon/redux-devtools) as a live-editing environment for your Redux apps.
 - [ESLint](http://eslint.org/) as a reporter for syntax and style issues. [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
 - [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
+- [Mocha](https://mochajs.org/) as a test framework.
+- [Chai](http://chaijs.com/) as a BDD assertion library that works along with `Mocha`.
 
 ## Getting Started
 
@@ -20,7 +22,7 @@ The provided boilerplate enables client-side ES6 via the following technologies:
 ```
 $ git clone https://github.com/nicksp/redux-webpack-es6-boilerplate.git app-name
 $ cd app-name
-$ npm i
+$ npm install
 ```
 
 ### White Label It
@@ -42,11 +44,25 @@ There are two ways in which you can build and run the web app:
   * `$ npm start`
   * Point your browser to http://localhost:3000/, page hot reloads automatically when there are changes
 
+## Testing
+
+To execute all unit tests, use:
+
+```sh
+npm run test
+```
+
+To run unit tests continuously during development (watch tests), use:
+
+```sh
+npm run test:watch
+```
+
 ## FAQ
 
 ### What's this for?
 
-This starter kit implements best practices like testing (TBD), minification, bundling, and so on. It saves you from the long, painful process of wiring it all together into an automated dev environment and build process.
+This starter kit implements best practices like testing (`unit testing`), minification, bundling, and so on. It saves you from the long, painful process of wiring it all together into an automated dev environment and build process.
 
 ### What's happening under the hood when I run `npm start`?
 
@@ -81,9 +97,9 @@ When you run `npm run build`:
 
 ## TODO
 
-- Watch `index.html` for changes
-- Add an ability to test React components using Karma and Jasmine
-- Make a lightweight version of boilerplate (exclude Redux support?)
+- [ ] Watch `index.html` for changes
+- [x] Add an ability to test React components using Karma and Jasmine
+- [ ] Make a lightweight version of boilerplate (exclude Redux support?)
 
 ## License
 
