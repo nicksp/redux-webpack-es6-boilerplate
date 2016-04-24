@@ -33,7 +33,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case types.ADD_FRIEND:
+    case types.ADD_FRIEND: {
       const len = state.friends.length ? state.friends.length : 1;
       const newId = (state.friends[len - 1] + 1) || 0;
       return {
@@ -47,6 +47,7 @@ export default function (state = initialState, action) {
           }
         ]
       };
+    }
 
     case types.DELETE_FRIEND:
       return {

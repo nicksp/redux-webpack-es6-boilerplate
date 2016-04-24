@@ -5,7 +5,8 @@ import React, { Component, PropTypes } from 'react';
 export default class AddFriendInput extends Component {
 
   static propTypes = {
-    addFriend: PropTypes.func.isRequired
+    addFriend: PropTypes.func.isRequired,
+    name: PropTypes.string
   };
 
   constructor(props, context) {

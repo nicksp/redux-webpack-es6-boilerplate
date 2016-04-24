@@ -1,7 +1,6 @@
 import './FriendList.scss';
 
 import React, { Component, PropTypes } from 'react';
-import { mapValues } from 'lodash';
 
 import FriendListItem from '../FriendListItem/FriendListItem';
 

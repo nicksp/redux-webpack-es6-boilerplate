@@ -9,6 +9,11 @@ import { AddFriendInput, FriendList } from '../../components';
 
 class FriendListApp extends Component {
 
+  static propTypes = {
+    friendList: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
+  };
+
   render () {
     const { friendList: { friendsById }, actions } = this.props;
 
