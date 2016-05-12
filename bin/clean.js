@@ -1,7 +1,8 @@
 var rimraf = require('rimraf');
+var path = require('path');
 var fs = require('fs');
 
-var dir = '../build';
+var dir = path.resolve(__dirname,'../build');
 
 rimraf(dir, function (err) {
 	if (err) {
