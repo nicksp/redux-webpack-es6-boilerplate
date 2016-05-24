@@ -27,7 +27,7 @@ $ npm install
 
 ### White Label It
 
-- Update name, desription, author, repository in `package.json`
+- Update name, description, author, repository in `package.json`
 - Update app title in `src/index.html`
 
 
