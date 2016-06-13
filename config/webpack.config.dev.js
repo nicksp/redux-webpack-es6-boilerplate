@@ -77,7 +77,8 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, '../src'),
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
   },
   devtool: 'eval'
 };
