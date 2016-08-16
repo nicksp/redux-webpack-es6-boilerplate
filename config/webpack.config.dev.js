@@ -27,7 +27,7 @@ const plugins = [
 ];
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'cheap-eval-source-map',
   entry: {
     app: path.join(PATHS.app, 'main.js'),
     vendor: ['react']
