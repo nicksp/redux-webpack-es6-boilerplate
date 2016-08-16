@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -21,33 +20,41 @@ const plugins = [
     }
   ]),
   // Shared code
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.bundle.js'),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    filename: 'js/vendor.bundle.js'
+  }),
   // Avoid publishing files when compilation fails
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('production'),
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    },
     __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
   }),
-  new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false
+  }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
-      warnings: false
-    }
+      warnings: false,
+      screw_ie8: true
+    },
+    sourceMap: false
   }),
   // This plugin moves all the CSS into a separate stylesheet
-  new ExtractTextPlugin('css/app.css', { allChunks: true })
-];
-
-const sassLoaders = [
-  'css-loader?sourceMap',
-  'postcss-loader',
-  'sass-loader?outputStyle=compressed'
+  new ExtractTextPlugin({
+    filename: 'css/app.css',
+    allChunks: true
+  })
 ];
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
   entry: {
-    app: path.resolve(PATHS.app, 'main.js'),
+    app: path.join(PATHS.app, 'main'),
     vendor: ['react']
   },
   output: {
@@ -59,8 +66,11 @@ module.exports = {
     colors: true
   },
   resolve: {
-    // We can now require('file') instead of require('file.jsx')
-    extensions: ['', '.js', '.jsx', '.scss']
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ],
+    extensions: ['.js', '.jsx', '.scss']
   },
   module: {
     noParse: /\.min\.js$/,
@@ -72,21 +82,39 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style',
+          loader: [
+            { loader: 'css', query: { sourceMap: true } },
+            'postcss',
+            { loader: 'sass', query: { outputStyle: 'compressed' } }
+          ]
+        })
       },
       {
         test: /\.css$/,
         include: PATHS.styles,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style',
+          loader: ['css', 'postcss']
+        })
       },
       // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
-        loader: 'url-loader?limit=8192&name=images/[name].[ext]?[hash]'
+        loader: 'url',
+        query: {
+          limit: 8192,
+          name: 'images/[name].[ext]?[hash]'
+        }
       },
       {
         test: /\.(woff|woff2)$/,
-        loader: 'url-loader?limit=8192&name=fonts/[name].[ext]?[hash]'
+        loader: 'url',
+        query: {
+          limit: 8192,
+          name: 'fonts/[name].[ext]?[hash]'
+        }
       }
     ]
   },
@@ -95,6 +123,5 @@ module.exports = {
     return [autoprefixer({
       browsers: ['last 2 versions']
     })];
-  },
-  devtool: 'source-map'
+  }
 };

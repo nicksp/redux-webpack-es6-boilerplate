@@ -11,27 +11,21 @@ const PATHS = {
 
 const plugins = [
   // Shared code
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.bundle.js'),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    filename: 'js/vendor.bundle.js'
+  }),
   // Avoid publishing files when compilation fails
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('development'),
     __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-  }),
-  new webpack.optimize.OccurenceOrderPlugin()
-];
-
-const sassLoaders = [
-  'style-loader',
-  'css-loader?sourceMap',
-  'postcss-loader',
-  'sass-loader?outputStyle=expanded'
+  })
 ];
 
 module.exports = {
-  env : process.env.NODE_ENV,
+  devtool: 'eval',
   entry: {
-    app: path.resolve(PATHS.app, 'main.js'),
+    app: path.join(PATHS.app, 'main.js'),
     vendor: ['react']
   },
   output: {
@@ -44,8 +38,11 @@ module.exports = {
     reasons: true
   },
   resolve: {
-    // We can now require('file') instead of require('file.jsx')
-    extensions: ['', '.js', '.jsx', '.scss']
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ],
+    extensions: ['.js', '.jsx', '.scss']
   },
   module: {
     loaders: [
@@ -56,16 +53,24 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: sassLoaders.join('!')
+        loaders: [
+          'style',
+          { loader: 'css', query: { sourceMap: true } },
+          'postcss',
+          { loader: 'sass', query: { outputStyle: 'expanded' } }
+        ]
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
+        loader: 'style!css!postcss'
       },
       // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: 'url-loader?limit=8192'
+        loader: 'url',
+        query: {
+          limit: 8192
+        }
       }
     ]
   },
@@ -79,6 +84,5 @@ module.exports = {
     contentBase: path.resolve(__dirname, '../src'),
     port: 3000,
     historyApiFallback: true
-  },
-  devtool: 'eval'
+  }
 };
