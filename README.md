@@ -14,6 +14,7 @@ The provided boilerplate enables client-side ES6 via the following technologies:
 - [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) as a virtual Dom JavaScript library for rendering user interfaces (views).
 - [Redux](http://redux.js.org/) as an incredibly simple way of modelling your data app state, with great community support.
 - [Redux DevTools](https://github.com/gaearon/redux-devtools) as a live-editing environment for your Redux apps.
+- [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard) as a CLI dashboard for your webpack dev server
 - [ESLint](http://eslint.org/) as a reporter for syntax and style issues. [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
 - [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
 - [Mocha](https://mochajs.org/) as a test framework.
@@ -70,7 +71,7 @@ This starter kit implements best practices like testing (`unit testing`), minifi
 
 ### What's happening under the hood when I run `npm start`?
 
-Webpack serves your app in memory when you run `npm start`. No physical files are written. However, the web root is /src, so you can reference files under /src in index.html. When the app is built using `npm run build`, physical files are written to `/build` folder and the app is served from `/build`.
+Webpack serves your app in memory when you run `npm start`. No physical files are written. However, the web root is `/src`, so you can reference files under /src in index.html. When the app is built using `npm run build`, physical files are written to `/build` folder and the app is served from `/build`.
 
 ### How is Sass being processed?
 
