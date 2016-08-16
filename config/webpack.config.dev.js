@@ -1,6 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const Dashboard = require('webpack-dashboard');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const dashboard = new Dashboard();
 
 // App files location
 const PATHS = {
@@ -19,7 +22,8 @@ const plugins = [
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
     __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-  })
+  }),
+  new DashboardPlugin(dashboard.setData)
 ];
 
 module.exports = {
@@ -83,6 +87,7 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, '../src'),
     port: 3000,
+    quiet: true,
     historyApiFallback: true
   }
 };
