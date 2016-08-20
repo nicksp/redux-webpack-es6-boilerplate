@@ -12,24 +12,21 @@ const PATHS = {
   build: path.resolve(__dirname, '../build')
 };
 
-const plugins = [
-  // Shared code
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor',
-    filename: 'js/vendor.bundle.js'
-  }),
-  // Avoid publishing files when compilation fails
-  new webpack.NoErrorsPlugin(),
-  new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-  }),
-  new DashboardPlugin(dashboard.setData)
-];
+const GLOBALS = {
+  'process.env': {
+    'NODE_ENV': JSON.stringify('development')
+  },
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+};
 
 module.exports = {
   devtool: 'cheap-eval-source-map',
   entry: {
-    app: path.join(PATHS.app, 'main.js'),
+    app: [
+      'webpack-hot-middleware/client',
+      'react-hot-loader/patch',
+      path.join(PATHS.app, 'main.js')
+    ],
     vendor: ['react']
   },
   output: {
@@ -52,7 +49,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel'],
+        loaders: ['babel'],
         include: PATHS.app
       },
       {
@@ -78,16 +75,19 @@ module.exports = {
       }
     ]
   },
-  plugins: plugins,
+  plugins: [
+    // Shared code
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'js/vendor.bundle.js'
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin(GLOBALS),
+    new DashboardPlugin(dashboard.setData)
+  ],
   postcss: function () {
     return [autoprefixer({
       browsers: ['last 2 versions']
     })];
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, '../src'),
-    port: 3000,
-    quiet: true,
-    historyApiFallback: true
   }
 };

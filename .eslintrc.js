@@ -63,4 +63,4 @@ module.exports = {
     "react/self-closing-comp": "warn",
     "react/sort-comp": "warn"
   }
-}
+};

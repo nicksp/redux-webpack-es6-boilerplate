@@ -1,41 +1,55 @@
+import React from 'react';
+import { render } from 'react-dom';
+import configureStore  from './store/configureStore';
+import { browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { AppContainer } from 'react-hot-loader';
+import Redbox from 'redbox-react';
+
+import Root from './components/Root';
+
 import '../styles/bootstrap.min.css';
 import '../styles/styles.scss';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import configureStore  from './store/configureStore';
-import { Router, browserHistory } from 'react-router';
-
-import routes from './routes';
-
 const store = configureStore();
-const rootElement = document.getElementById('app');
+const history = syncHistoryWithStore(browserHistory, store);
 
-let ComponentEl;
-
-if (process.env.NODE_ENV !== 'production') {
-  const DevTools = require('./containers/DevTools').default;
-
-  // If using routes
-  ComponentEl = (
-    <div>
-      <Router history={browserHistory} routes={routes} />
-      <DevTools />
-    </div>
-  );
-} else {
-  ComponentEl = (
-    <div>
-      <Router history={browserHistory} routes={routes} />
-    </div>
-  );
-}
+// Get the DOM Element that will host our React application
+const rootEl = document.getElementById('app');
 
 // Render the React application to the DOM
-ReactDOM.render(
-  <Provider store={store}>
-    {ComponentEl}
-  </Provider>,
-  rootElement
+render(
+  <AppContainer errorReporter={Redbox}>
+    <Root store={store} history={history} />
+  </AppContainer>,
+  rootEl
 );
+
+if (module.hot) {
+  /**
+   * Warning from React Router, caused by react-hot-loader.
+   * The warning can be safely ignored, so filter it from the console.
+   * Otherwise you'll see it every time something changes.
+   * See https://github.com/gaearon/react-hot-loader/issues/298
+   */
+   const orgError = console.error; // eslint-disable-line no-console
+   console.error = (message) => { // eslint-disable-line no-console
+     if (message && message.indexOf('You cannot change <Router routes>;') === -1) {
+       // Log the error as normally
+       orgError.apply(console, [message]);
+     }
+   };
+
+  module.hot.accept('./components/Root', () => {
+    // If you use Webpack 2 in ES modules mode, you can
+    // use <App /> here rather than require() a <NextApp />.
+    const NextApp = require('./components/Root').default;
+
+    render(
+      <AppContainer errorReporter={Redbox}>
+        <NextApp store={store} history={history} />
+      </AppContainer>,
+      rootEl
+    );
+  });
+}

@@ -4,23 +4,32 @@
 
 <hr />
 
-A boilerplate using React, Redux, webpack + hot module reloading, and ES6 + JSX via Babel.
+A boilerplate using the power and simplicity of React, Redux, Webpack 2 + HMR, and ES6 + JSX via Babel. Includes `tree shaking` configuration.
 
-The provided boilerplate enables client-side ES6 via the following technologies:
+The provided boilerplate enables client-side ES6 via the following technology stack:
 
-- [webpack](http://webpack.github.io/) and [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) as a client-side module builder and module loader.
-- [npm](https://www.npmjs.com/) as a package manager and task runner (say [**NO**](http://blog.keithcirkel.co.uk/why-we-should-stop-using-grunt/) to gulp/grunt).
-- [Babel](http://babeljs.io/) 6 as a transpiler from ES6 to ES5.
-- [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) as a virtual Dom JavaScript library for rendering user interfaces (views).
-- [Redux](http://redux.js.org/) as an incredibly simple way of modelling your data app state, with great community support.
-- [Redux DevTools](https://github.com/gaearon/redux-devtools) as a live-editing environment for your Redux apps.
-- [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard) as a CLI dashboard for your webpack dev server
-- [ESLint](http://eslint.org/) as a reporter for syntax and style issues. [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
-- [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
-- [Mocha](https://mochajs.org/) as a test framework.
-- [Chai](http://chaijs.com/) as a BDD assertion library that works along with `Mocha`.
+- [x] [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) as a virtual Dom JavaScript library for rendering user interfaces (views).
+- [x] [Redux](http://redux.js.org/) as an incredibly simple way of modelling your data app state, with great community support.
+- [x] [Webpack 2](http://webpack.github.io/) and [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) as a client-side module builder and module loader.
+- [x] [npm](https://www.npmjs.com/) as a package manager and task runner.
+- [x] [Babel](http://babeljs.io/) 6 as a transpiler from ES6 to ES5.
+- [x] [PostCSS](http://postcss.org/)
+- [x] [CSS Modules](https://github.com/css-modules/postcss-modules)
+- [x] [Redux DevTools](https://github.com/gaearon/redux-devtools) as a live-editing environment for your Redux apps (as a [browser extension](https://github.com/zalmoxisus/redux-devtools-extension)).
+- [x] [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard) as a CLI dashboard for your webpack dev server
+- [x] [React Router Redux](https://github.com/reactjs/react-router-redux) - simple bindings to keep React Router and Redux in sync
+- [x] [React Intl](https://github.com/yahoo/react-intl) - internationalization for React
+- [x] [ESLint](http://eslint.org/) as a reporter for syntax and style issues.
+- [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
+- [x] [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
+- [x] [Mocha](https://mochajs.org/) as a test framework.
+- [x] [Chai](http://chaijs.com/) as a BDD assertion library that works along with `Mocha`.
 
 ## Getting Started
+
+### Prerequisites
+
+Support for Node.js > 5
 
 ### Installation
 
@@ -62,6 +71,13 @@ To run unit tests continuously during development (watch tests), use:
 ```sh
 npm run test:watch
 ```
+
+## Debugging
+
+For debugging purposes please use:
+- [Redux DevTools
+](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) plugin for Chrome to simplify debugging React apps.
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 
 ## FAQ
 
@@ -108,6 +124,6 @@ When you run `npm run build`:
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT)
+[MIT License](https://tldrlegal.com/license/mit-license), 2016
 
 Brought to you by Nick S. Plekhanov

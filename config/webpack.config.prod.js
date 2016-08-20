@@ -12,44 +12,12 @@ const PATHS = {
   build: path.resolve(__dirname, '../build')
 };
 
-const plugins = [
-  new CopyWebpackPlugin([
-    {
-      from: PATHS.images,
-      to: 'images'
-    }
-  ]),
-  // Shared code
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor',
-    filename: 'js/vendor.bundle.js'
-  }),
-  // Avoid publishing files when compilation fails
-  new webpack.NoErrorsPlugin(),
-  new webpack.DefinePlugin({
-    'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    },
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-  }),
-  new webpack.optimize.DedupePlugin(),
-  new webpack.LoaderOptionsPlugin({
-    minimize: true,
-    debug: false
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-      screw_ie8: true
-    },
-    sourceMap: false
-  }),
-  // This plugin moves all the CSS into a separate stylesheet
-  new ExtractTextPlugin({
-    filename: 'css/app.css',
-    allChunks: true
-  })
-];
+const GLOBALS = {
+  'process.env': {
+    'NODE_ENV': JSON.stringify('production')
+  },
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+};
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -118,7 +86,39 @@ module.exports = {
       }
     ]
   },
-  plugins: plugins,
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: PATHS.images,
+        to: 'images'
+      }
+    ]),
+    // Shared code
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'js/vendor.bundle.js'
+    }),
+    // Avoid publishing files when compilation fails
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin(GLOBALS),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        screw_ie8: true
+      },
+      sourceMap: false
+    }),
+    // This plugin moves all the CSS into a separate stylesheet
+    new ExtractTextPlugin({
+      filename: 'css/app.css',
+      allChunks: true
+    })
+  ],
   postcss: function () {
     return [autoprefixer({
       browsers: ['last 2 versions']
