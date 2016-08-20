@@ -3,10 +3,13 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const config = require('./config/webpack.config.dev');
 
 const app = express();
 const compiler = webpack(config);
+
+compiler.apply(new DashboardPlugin());
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3000;

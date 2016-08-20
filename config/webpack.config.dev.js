@@ -1,9 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const Dashboard = require('webpack-dashboard');
-const DashboardPlugin = require('webpack-dashboard/plugin');
-const dashboard = new Dashboard();
 
 // App files location
 const PATHS = {
@@ -82,8 +79,7 @@ module.exports = {
       filename: 'js/vendor.bundle.js'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin(GLOBALS),
-    new DashboardPlugin(dashboard.setData)
+    new webpack.DefinePlugin(GLOBALS)
   ],
   postcss: function () {
     return [autoprefixer({
