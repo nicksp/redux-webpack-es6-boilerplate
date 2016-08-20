@@ -2,7 +2,7 @@
   "presets": [
     "es2015-native-modules",
     "react",
-    "stage-1"
+    "stage-0"
   ],
   "plugins": ["transform-runtime", "react-hot-loader/babel"]
 }
