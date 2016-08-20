@@ -10,8 +10,8 @@ import { AddFriendInput, FriendList } from '../../components';
 class FriendListApp extends Component {
 
   static propTypes = {
-    friendList: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    friendList: PropTypes.object.isRequired
   };
 
   render () {

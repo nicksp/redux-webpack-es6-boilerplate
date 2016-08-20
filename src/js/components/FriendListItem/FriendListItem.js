@@ -6,11 +6,11 @@ import classnames from 'classnames';
 export default class FriendListItem extends Component {
 
   static propTypes = {
+    deleteFriend: PropTypes.func.isRequired,
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    starred: PropTypes.bool,
     starFriend: PropTypes.func.isRequired,
-    deleteFriend: PropTypes.func.isRequired
+    starred: PropTypes.bool
   };
 
   render () {

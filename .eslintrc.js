@@ -8,7 +8,8 @@ module.exports = {
     "sourceType": "module",
     "ecmaFeatures": {
       "impliedStrict": true,
-      "jsx": true
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     }
   },
 
@@ -43,7 +44,6 @@ module.exports = {
     "no-labels": "error",
     "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
     "func-style": "off",
-    "react/wrap-multilines": "error",
     "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
     "react/jsx-boolean-value": "warn",
     "react/jsx-closing-bracket-location": "off",
@@ -56,11 +56,12 @@ module.exports = {
     "react/jsx-pascal-case": "warn",
     "react/jsx-sort-prop-types": "off",
     "react/jsx-sort-props": "off",
+    "react/jsx-wrap-multilines": "error",
     "react/no-multi-comp": "warn",
     "react/no-set-state": "off",
     "react/prefer-es6-class": "warn",
-    "react/require-extension": "warn",
     "react/self-closing-comp": "warn",
-    "react/sort-comp": "warn"
+    "react/sort-comp": "warn",
+    "react/sort-prop-types": "warn"
   }
 };

@@ -7,8 +7,8 @@ import FriendListItem from '../FriendListItem/FriendListItem';
 export default class FriendList extends Component {
 
   static propTypes = {
-    friends: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    friends: PropTypes.array.isRequired
   };
 
   renderList() {
