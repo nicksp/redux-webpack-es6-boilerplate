@@ -9,10 +9,16 @@ const config = require('./config/webpack.config.dev');
 const app = express();
 const compiler = webpack(config);
 
+// Apply CLI dashboard for your webpack dev server
 compiler.apply(new DashboardPlugin());
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3000;
+
+function log() {
+  arguments[0] = '\nWebpack: ' + arguments[0];
+  console.log.apply(console, arguments);
+}
 
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
@@ -25,15 +31,15 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './src/index.html'));
 });
 
-app.listen(port, host, function (err) {
+app.listen(port, host, (err) => {
   if (err) {
-    console.error(err);
+    log(err);
     return;
   }
 
-  console.info('==> 🚧  App is listening at http://%s:%s', host, port);
+  log('🚧  App is listening at http://%s:%s', host, port);
 });

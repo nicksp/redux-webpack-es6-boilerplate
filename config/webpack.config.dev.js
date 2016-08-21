@@ -1,89 +1,69 @@
 const path = require('path');
+const merge = require('webpack-merge');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-
-// App files location
-const PATHS = {
-  app: path.resolve(__dirname, '../src/js'),
-  styles: path.resolve(__dirname, '../src/styles'),
-  build: path.resolve(__dirname, '../build')
-};
+const config = require('./webpack.config.base');
 
 const GLOBALS = {
   'process.env': {
     'NODE_ENV': JSON.stringify('development')
   },
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true'))
 };
 
-module.exports = {
-  devtool: 'cheap-eval-source-map',
+module.exports = merge(config, {
+  debug: true,
+  cache: true,
+  devtool: 'cheap-module-eval-source-map',
   entry: {
-    app: [
+    application: [
       'webpack-hot-middleware/client',
       'react-hot-loader/patch',
-      path.join(PATHS.app, 'main.js')
+      'main'
     ],
     vendor: ['react']
   },
-  output: {
-    path: PATHS.build,
-    filename: 'js/[name].js',
-    publicPath: '/'
-  },
-  stats: {
-    colors: true,
-    reasons: true
-  },
-  resolve: {
-    modules: [
-      path.join(__dirname, 'src'),
-      'node_modules'
-    ],
-    extensions: ['.js', '.jsx', '.scss']
-  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin(GLOBALS)
+  ],
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: PATHS.app
-      },
+      // Sass
       {
         test: /\.scss$/,
+        include: [
+          /src\/js/,
+          /src\/styles/
+        ],
         loaders: [
           'style',
-          { loader: 'css', query: { sourceMap: true } },
+          'css',
           'postcss',
           { loader: 'sass', query: { outputStyle: 'expanded' } }
         ]
       },
+      // Sass + CSS Modules
+      // {
+      //   test: /\.scss$/,
+      //   include: /src\/js/,
+      //   loaders: [
+      //     'style',
+      //     {
+      //       loader: 'css',
+      //       query: {
+      //         modules: true,
+      //         localIdentName: '[path][name]__[local]--[hash:base64:5]'
+      //       }
+      //     },
+      //     'postcss',
+      //     { loader: 'sass', query: { outputStyle: 'expanded' } }
+      //   ]
+      // },
+      // CSS
       {
         test: /\.css$/,
         loader: 'style!css!postcss'
-      },
-      // Inline base64 URLs for <=8k images, direct URLs for the rest
-      {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: 'url',
-        query: {
-          limit: 8192
-        }
       }
     ]
-  },
-  plugins: [
-    // Shared code
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'js/vendor.bundle.js'
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin(GLOBALS)
-  ],
-  postcss: function () {
-    return [autoprefixer({
-      browsers: ['last 2 versions']
-    })];
   }
-};
+});

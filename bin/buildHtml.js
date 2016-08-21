@@ -6,9 +6,9 @@
 
 /*eslint-disable no-console */
 
-var fs = require('fs');
-var colors = require('colors');
-var cheerio = require('cheerio');
+const fs = require('fs');
+const colors = require('colors');
+const cheerio = require('cheerio');
 
 fs.readFile('src/index.html', 'utf8', (err, markup) => {
   if (err) {

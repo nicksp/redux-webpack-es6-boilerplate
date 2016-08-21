@@ -1,16 +1,9 @@
 const path = require('path');
+const merge = require('webpack-merge');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
-// App files location
-const PATHS = {
-  app: path.resolve(__dirname, '../src/js'),
-  styles: path.resolve(__dirname, '../src/styles'),
-  images: path.resolve(__dirname, '../src/images'),
-  build: path.resolve(__dirname, '../build')
-};
+const config = require('./webpack.config.base');
 
 const GLOBALS = {
   'process.env': {
@@ -19,37 +12,53 @@ const GLOBALS = {
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 };
 
-module.exports = {
+module.exports = merge(config, {
+  debug: false,
   devtool: 'cheap-module-source-map',
   entry: {
-    app: path.join(PATHS.app, 'main'),
+    application: 'main',
     vendor: ['react']
   },
-  output: {
-    path: PATHS.build,
-    filename: 'js/[name].js',
-    publicPath: '/'
-  },
-  stats: {
-    colors: true
-  },
-  resolve: {
-    modules: [
-      path.join(__dirname, 'src'),
-      'node_modules'
-    ],
-    extensions: ['.js', '.jsx', '.scss']
-  },
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../src/images'),
+        to: 'images'
+      }
+    ]),
+    // Avoid publishing files when compilation fails
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin(GLOBALS),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        screw_ie8: true
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: false
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new ExtractTextPlugin({
+      filename: 'css/app.css',
+      allChunks: true
+    })
+  ],
   module: {
     noParse: /\.min\.js$/,
     loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel'],
-        include: PATHS.app
-      },
+      // Sass
       {
         test: /\.scss$/,
+        include: [
+          /src\/js/,
+          /src\/styles/
+        ],
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
           loader: [
@@ -59,69 +68,31 @@ module.exports = {
           ]
         })
       },
+      // Sass + CSS Modules
+      // {
+      //   test: /\.scss$/,
+      //   include: /src\/js/,
+      //   loaders: [
+      //     'style',
+      //     {
+      //       loader: 'css',
+      //       query: {
+      //         modules: true,
+      //         localIdentName: '[path][name]__[local]--[hash:base64:5]'
+      //       }
+      //     },
+      //     'postcss',
+      //     { loader: 'sass', query: { outputStyle: 'expanded' } }
+      //   ]
+      // },
+      // CSS
       {
         test: /\.css$/,
-        include: PATHS.styles,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
           loader: ['css', 'postcss']
         })
-      },
-      // Inline base64 URLs for <=8k images, direct URLs for the rest
-      {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
-        loader: 'url',
-        query: {
-          limit: 8192,
-          name: 'images/[name].[ext]?[hash]'
-        }
-      },
-      {
-        test: /\.(woff|woff2)$/,
-        loader: 'url',
-        query: {
-          limit: 8192,
-          name: 'fonts/[name].[ext]?[hash]'
-        }
       }
     ]
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: PATHS.images,
-        to: 'images'
-      }
-    ]),
-    // Shared code
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'js/vendor.bundle.js'
-    }),
-    // Avoid publishing files when compilation fails
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin(GLOBALS),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        screw_ie8: true
-      },
-      sourceMap: false
-    }),
-    // This plugin moves all the CSS into a separate stylesheet
-    new ExtractTextPlugin({
-      filename: 'css/app.css',
-      allChunks: true
-    })
-  ],
-  postcss: function () {
-    return [autoprefixer({
-      browsers: ['last 2 versions']
-    })];
-  }
-};
+});
