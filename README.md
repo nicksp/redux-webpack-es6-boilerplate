@@ -8,22 +8,26 @@ A boilerplate using the power and simplicity of React, Redux, Webpack 2 + HMR, a
 
 The provided boilerplate enables client-side ES6 via the following technology stack:
 
-- [x] [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) as a virtual Dom JavaScript library for rendering user interfaces (views).
-- [x] [Redux](http://redux.js.org/) as an incredibly simple way of modelling your data app state, with great community support.
-- [x] [Webpack 2](http://webpack.github.io/) and [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) as a client-side module builder and module loader.
-- [x] [npm](https://www.npmjs.com/) as a package manager and task runner.
-- [x] [Babel](http://babeljs.io/) 6 as a transpiler from ES6 to ES5.
-- [x] [PostCSS](http://postcss.org/)
-- [x] [CSS Modules](https://github.com/css-modules/postcss-modules)
-- [x] [Redux DevTools](https://github.com/gaearon/redux-devtools) as a live-editing environment for your Redux apps (as a [browser extension](https://github.com/zalmoxisus/redux-devtools-extension)).
-- [x] [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard) as a CLI dashboard for your webpack dev server
-- [x] [React Router Redux](https://github.com/reactjs/react-router-redux) - simple bindings to keep React Router and Redux in sync
-- [x] [React Intl](https://github.com/yahoo/react-intl) - internationalization for React
-- [x] [ESLint](http://eslint.org/) as a reporter for syntax and style issues.
-- [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
-- [x] [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
-- [x] [Mocha](https://mochajs.org/) as a test framework.
-- [x] [Chai](http://chaijs.com/) as a BDD assertion library that works along with `Mocha`.
+- [x] [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) — a virtual DOM JavaScript library for rendering UI.  It's about rendering view as a function of state, making JavaScript-driven UI declarative the way HTML is declarative.
+- [x] [Redux](http://redux.js.org/) — an incredibly simple way of modelling your data app state, with great community support
+- [x] [Webpack 2](https://gist.github.com/sokra/27b24881210b56bbaff7) and [dev middleware](https://github.com/webpack/webpack-dev-middleware) — client-side module builder and module loader
+- [x] [React Hot Loader 3](https://github.com/gaearon/react-hot-boilerplate/pull/61) — combines the best of React Hot Loader and React Transform and fixes some [long-standing issues](https://twitter.com/dan_abramov/status/722040946075045888)
+- [ ] [React Router v3](https://github.com/reactjs/react-router/blob/next/CHANGES.md) — to allow [dynamic routing](https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md)
+- [x] [React Router Redux](https://github.com/reactjs/react-router-redux) — simple bindings to keep React Router and Redux in sync
+- [ ] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs
+- [x] [npm](https://www.npmjs.com/) — package manager and task runner
+- [x] [Babel 6](http://babeljs.io/) — transpiler from ES6 / JSX to ES5
+- [x] [PostCSS](http://postcss.org/) — ecosystem of custom plugins and tools aimed at transforming extended syntaxes and features into modern, browser-friendly CSS
+- [x] [CSS Modules](https://github.com/css-modules/css-modules) — guarantee that all the styles for a single component, designed to fix the problem of the global scope in CSS
+- [x] [Redux DevTools](https://github.com/gaearon/redux-devtools) — a live-editing environment for your Redux apps (as a [browser extension](https://github.com/zalmoxisus/redux-devtools-extension))
+- [x] [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard) — CLI dashboard for your Webpack dev server
+- [ ] [React Intl](https://github.com/yahoo/react-intl) — internationalization for React projects
+- [x] [ESLint](http://eslint.org/docs/user-guide/configuring) — reporter for syntax and style issues
+- [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) — additional React specific linting rules
+- [x] [Sass](http://sass-lang.com/) — compiler of CSS styles with variables, mixins, and more
+- [x] [Mocha](https://mochajs.org/) — well-known and flexible test framework that you can use to run your JavaScript tests on the server or in the browser
+- [ ] [Enzyme](http://airbnb.io/enzyme/) — makes unit testing React components an absolute pleasure
+- [x] [Chai](http://chaijs.com/) — BDD assertion library that works along with `Mocha`
 
 ## Getting Started
 
