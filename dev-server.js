@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const DashboardPlugin = require('webpack-dashboard/plugin');
-const config = require('./config/webpack.config.dev');
+const config = require('./config/webpack.config.development');
 
 const app = express();
 const compiler = webpack(config);

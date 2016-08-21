@@ -52,6 +52,7 @@ module.exports = merge(config, {
       //       loader: 'css',
       //       query: {
       //         modules: true,
+      //         importLoaders: 1,
       //         localIdentName: '[path][name]__[local]--[hash:base64:5]'
       //       }
       //     },

@@ -72,18 +72,21 @@ module.exports = merge(config, {
       // {
       //   test: /\.scss$/,
       //   include: /src\/js/,
-      //   loaders: [
-      //     'style',
-      //     {
-      //       loader: 'css',
-      //       query: {
-      //         modules: true,
-      //         localIdentName: '[path][name]__[local]--[hash:base64:5]'
-      //       }
-      //     },
-      //     'postcss',
-      //     { loader: 'sass', query: { outputStyle: 'expanded' } }
-      //   ]
+      //   loader: ExtractTextPlugin.extract({
+      //     fallbackLoader: 'style',
+      //     loader: [
+      //       {
+      //         loader: 'css',
+      //         query: {
+      //           modules: true,
+      //           importLoaders: 1,
+      //           localIdentName: '[path][name]__[local]--[hash:base64:5]'
+      //         }
+      //       },
+      //       'postcss',
+      //       { loader: 'sass', query: { outputStyle: 'compressed' } }
+      //     ]
+      //   })
       // },
       // CSS
       {

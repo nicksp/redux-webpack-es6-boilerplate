@@ -1,4 +1,4 @@
-// Common Webpack configuration used by webpack.config.dev and webpack.config.prod
+// Common Webpack configuration used by webpack.config.development and webpack.config.production
 
 const path = require('path');
 const webpack = require('webpack');

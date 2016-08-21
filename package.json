@@ -28,7 +28,7 @@
     "prestart": "node ./bin/clean.js",
     "start": "webpack-dashboard -c cyan -- node dev-server.js",
     "prebuild": "npm run clean:build && npm run build:html",
-    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.prod.js --progress",
+    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.production.js --progress",
     "lint": "eslint config src/js/** --ext .js",
     "jscs": "jscs src/js/",
     "test": "mocha --compilers js:babel-core/register,css:./test/unit/cssNullCompiler.js --require ./test/unit/testHelper.js --recursive ./test/unit",
