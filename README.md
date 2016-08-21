@@ -1,9 +1,5 @@
 # React + Redux w/ ES6 Starter Project
 
-**UPDATE:** A *BIG* update is coming to the boilerplate, incl. Webpack 2 (tree-shaking), React Hot Loader v3, Code Splitting for React Router, scalable app architecture, new utility tools, best practices, and more. Stay tuned for **soon** updates.
-
-<hr />
-
 A boilerplate using the power and simplicity of React, Redux, Webpack 2 + HMR, and ES6 + JSX via Babel. Includes `tree shaking` configuration.
 
 The provided boilerplate enables client-side ES6 via the following technology stack:
