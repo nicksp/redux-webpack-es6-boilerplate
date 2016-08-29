@@ -1,0 +1,24 @@
+[include]
+
+[ignore]
+<PROJECT_ROOT>/build/.*
+
+# Including these files causes issues
+.*/node_modules/fbjs/.*
+.*/node_modules/jsonlint/.*
+
+[libs]
+# Official "flow-typed" repository definitions
+config/flow/flow-typed/npm
+
+# Custom definitions
+config/flow/definitions/
+
+[options]
+module.use_strict=true
+
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+
+[version]
+^0.31

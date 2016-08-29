@@ -11,7 +11,7 @@ The provided boilerplate enables client-side ES6 via the following technology st
 - [ ] [React Router v3](https://github.com/reactjs/react-router/blob/next/CHANGES.md) — to allow [dynamic routing](https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md)
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux) — simple bindings to keep React Router and Redux in sync
 - [x] [Reselect](https://github.com/reactjs/reselect) — provides a way to access Redux state in components and build composable selectors that are automatically memoized
-- [ ] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs
+- [x] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs. The flow type annotations get ripped out of the source by the webpack build step. You have no obligation to use flow within your code and can even uninstall the dependency (`flow-bin`) without breaking the project.
 - [x] [npm](https://www.npmjs.com/) — package manager and task runner
 - [x] [Babel 6](http://babeljs.io/) — transpiler from ES6 / JSX to ES5
 - [x] [PostCSS](http://postcss.org/) — ecosystem of custom plugins and tools aimed at transforming extended syntaxes and features into modern, browser-friendly CSS
@@ -20,7 +20,7 @@ The provided boilerplate enables client-side ES6 via the following technology st
 - [x] [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard) — CLI dashboard for your Webpack dev server
 - [ ] [React Intl](https://github.com/yahoo/react-intl) — internationalization for React projects
 - [x] [ESLint](http://eslint.org/docs/user-guide/configuring) — reporter for syntax and style issues
-- [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) — additional React specific linting rules
+- [x] [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) & [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype) — additional React/Flow type specific linting rules for ESLint
 - [x] [Sass](http://sass-lang.com/) — compiler of CSS styles with variables, mixins, and more
 - [x] [Mocha](https://mochajs.org/) — well-known and flexible test framework that you can use to run your JavaScript tests on the server or in the browser
 - [ ] [Enzyme](http://airbnb.io/enzyme/) — makes unit testing React components an absolute pleasure
