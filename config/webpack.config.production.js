@@ -16,7 +16,7 @@ module.exports = merge(config, {
   debug: false,
   devtool: 'cheap-module-source-map',
   entry: {
-    application: 'main',
+    application: 'production.js',
     vendor: ['react']
   },
   plugins: [
@@ -56,8 +56,9 @@ module.exports = merge(config, {
       {
         test: /\.scss$/,
         include: [
-          /src\/js/,
-          /src\/styles/
+          /src\/javascripts/,
+          /src\/styles/,
+          /src\/scripts/
         ],
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
@@ -71,7 +72,7 @@ module.exports = merge(config, {
       // Sass + CSS Modules
       // {
       //   test: /\.scss$/,
-      //   include: /src\/js/,
+      //   include: /src\/javascripts/,
       //   loader: ExtractTextPlugin.extract({
       //     fallbackLoader: 'style',
       //     loader: [

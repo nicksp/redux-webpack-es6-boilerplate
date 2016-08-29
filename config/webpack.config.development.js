@@ -18,7 +18,7 @@ module.exports = merge(config, {
     application: [
       'webpack-hot-middleware/client',
       'react-hot-loader/patch',
-      'main'
+      './src/client/scripts/development'
     ],
     vendor: ['react']
   },
@@ -32,8 +32,9 @@ module.exports = merge(config, {
       {
         test: /\.scss$/,
         include: [
-          /src\/js/,
-          /src\/styles/
+          /src\/client\/assets\/javascripts/,
+          /src\/client\/assets\/styles/,
+          /scripts/
         ],
         loaders: [
           'style',
@@ -45,7 +46,7 @@ module.exports = merge(config, {
       // Sass + CSS Modules
       // {
       //   test: /\.scss$/,
-      //   include: /src\/js/,
+      //   include: /src\/javascripts/,
       //   loaders: [
       //     'style',
       //     {

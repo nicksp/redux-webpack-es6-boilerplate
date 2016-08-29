@@ -5,3 +5,4 @@ node_modules
 build
 *.log*
 npm-debug.log
+as-redux-structure (for inspiration)/

@@ -1,6 +1,6 @@
 # React + Redux w/ ES6 Starter Project
 
-A boilerplate using the power and simplicity of React, Redux, Webpack 2 + HMR, and ES6 + JSX via Babel. Includes `tree shaking` configuration.
+A boilerplate using the power and simplicity of React, Redux, Webpack 2 + HMR, and ES6 + JSX via Babel. Includes `tree shaking` configuration. It's suitable for scalable applications and organized using the custom variation of [the Ducks pattern](https://github.com/nicksp/ducks-modular-redux) — approach when each module's entry file (`feature-name.js`) contains all of its related constants, actions/action creators, selectors and it’s reducer.
 
 The provided boilerplate enables client-side ES6 via the following technology stack:
 
@@ -10,6 +10,7 @@ The provided boilerplate enables client-side ES6 via the following technology st
 - [x] [React Hot Loader 3](https://github.com/gaearon/react-hot-boilerplate/pull/61) — combines the best of React Hot Loader and React Transform and fixes some [long-standing issues](https://twitter.com/dan_abramov/status/722040946075045888)
 - [ ] [React Router v3](https://github.com/reactjs/react-router/blob/next/CHANGES.md) — to allow [dynamic routing](https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md)
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux) — simple bindings to keep React Router and Redux in sync
+- [x] [Reselect](https://github.com/reactjs/reselect) — provides a way to access Redux state in components and build composable selectors that are automatically memoized
 - [ ] [Flow](https://flowtype.org/docs/getting-started.html) — static type checker for JavaScript aimed at catching common bugs in JavaScript programs
 - [x] [npm](https://www.npmjs.com/) — package manager and task runner
 - [x] [Babel 6](http://babeljs.io/) — transpiler from ES6 / JSX to ES5

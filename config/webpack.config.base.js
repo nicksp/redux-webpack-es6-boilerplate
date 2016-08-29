@@ -12,12 +12,13 @@ module.exports = {
   },
   resolve: {
     modules: [
-      path.join(__dirname, '../src/js'),
-      path.join(__dirname, '../src/styles'),
+      path.join(__dirname, '../src/client/scripts'),
+      path.join(__dirname, '../src/client/assets'),
+      path.join(__dirname, '../src/client/assets/javascripts'),
       'node_modules'
     ],
     alias: {
-      models: path.join(__dirname, '../src/js/models')
+      models: path.join(__dirname, '../src/client/assets/javascripts/models')
     },
     extensions: ['.js', '.jsx', '.json', '.scss']
   },
@@ -37,7 +38,7 @@ module.exports = {
       // JavaScript / ES6
       {
         test: /\.jsx?$/,
-        include: /src\/js/,
+        include: /src\/client\/assets\/javascripts/,
         loaders: ['babel']
       },
       // Images
