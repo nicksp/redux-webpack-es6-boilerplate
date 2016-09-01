@@ -1,3 +1,4 @@
+config/flow
 config/webpack.config.development.js
 config/webpack.config.production.js
 dev-server.js
