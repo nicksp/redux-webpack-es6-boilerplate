@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const App = ({ children }) => (
+const App = (props) => (
   <div className="page-container">
-    {children}
+    {React.cloneElement({...props}.children, {...props})}
   </div>
 );
 
