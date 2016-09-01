@@ -64,14 +64,26 @@ There are two ways in which you can build and run the web app:
 To execute all unit tests, use:
 
 ```sh
-npm run test
+$ npm run test
 ```
 
 To run unit tests continuously during development (watch tests), use:
 
 ```sh
-npm run test:watch
+$ npm run test:watch
 ```
+
+## Expose App on Your Local Dev Machine
+
+Assign yourself a unique publicly accessible url that will proxy all requests to your locally running webserver.
+
+```sh
+$ npm install -g localtunnel
+$ npm start
+$ npm run tunnel # run in a new tab
+```
+
+You will receive a url, for example `https://tbst.localtunnel.me`, that you can share with anyone for as long as your local instance of `lt` remains active. Any requests will be routed to your local service at the specified port.
 
 ## Debugging
 
