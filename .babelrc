@@ -9,5 +9,10 @@
     "transform-decorators-legacy",
     "transform-flow-strip-types",
     "react-hot-loader/babel"
-  ]
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-react-remove-prop-types", "transform-react-constant-elements"]
+    }
+  }
 }
