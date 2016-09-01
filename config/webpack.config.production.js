@@ -16,13 +16,13 @@ module.exports = merge(config, {
   debug: false,
   devtool: 'cheap-module-source-map',
   entry: {
-    application: 'production.js',
-    vendor: ['react']
+    application: 'production',
+    vendor: ['react', 'react-dom', 'react-redux', 'react-router', 'react-router-redux', 'redux']
   },
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: path.join(__dirname, '../src/images'),
+        from: path.join(__dirname, '../src/client/assets/images'),
         to: 'images'
       }
     ]),
@@ -56,9 +56,9 @@ module.exports = merge(config, {
       {
         test: /\.scss$/,
         include: [
-          /src\/javascripts/,
-          /src\/styles/,
-          /src\/scripts/
+          /src\/client\/assets\/javascripts/,
+          /src\/client\/assets\/styles/,
+          /src\/client\/scripts/
         ],
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
@@ -72,7 +72,7 @@ module.exports = merge(config, {
       // Sass + CSS Modules
       // {
       //   test: /\.scss$/,
-      //   include: /src\/javascripts/,
+      //   include: /src\/client\/assets\/javascripts/,
       //   loader: ExtractTextPlugin.extract({
       //     fallbackLoader: 'style',
       //     loader: [
