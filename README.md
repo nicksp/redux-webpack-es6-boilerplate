@@ -25,6 +25,7 @@ The provided boilerplate enables client-side ES6 via the following technology st
 - [x] [Mocha](https://mochajs.org/) — well-known and flexible test framework that you can use to run your JavaScript tests on the server or in the browser
 - [ ] [Enzyme](http://airbnb.io/enzyme/) — makes unit testing React components an absolute pleasure
 - [x] [Chai](http://chaijs.com/) — BDD assertion library that works along with `Mocha`
+- [x] [Sentry](https://sentry.io/) — Real-time error tracking for your app
 
 ## Getting Started
 
@@ -119,6 +120,17 @@ When you run `npm run build`:
  1. The sass-loader compiles Sass into CSS
  2. The [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin) extracts the compiled Sass into app.css
  3. buildHtml.js adds a reference to the stylesheet to the head of index.html.
+
+### Error Tracking and Insights with Sentry
+
+In order to get info on errors that happened in production, we integrate [Sentry](https://sentry.io/for/javascript/) into our application to track errors and get context on what happened.
+
+To use it on your side, configure it first:
+
+* Create account at [https://sentry.io/signup/](https://sentry.io/signup/)
+* Add new project for your app on Sentry website
+* In `/src/client/assets/javascripts/app/config.js` file assign `SENTRY_KEY` and `SENTRY_APP` constants values that you got after adding a new project
+* Don't forget to define `Allowed Domains` section under your `Project Settings` on Sentry website to track errors from required domains
 
 ### How do I deploy this?
 

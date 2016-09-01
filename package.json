@@ -94,6 +94,7 @@
     "classnames": "2.2.3",
     "express": "4.14.0",
     "lodash": "4.11.1",
+    "raven-js": "3.6.1",
     "react": "15.0.1",
     "react-dom": "15.0.1",
     "react-hot-loader": "3.0.0-beta.2",
