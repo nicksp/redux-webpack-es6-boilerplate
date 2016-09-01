@@ -1,6 +1,9 @@
-import { createStructuredSelector } from 'reselect';
+// @flow
 
+import { createStructuredSelector } from 'reselect';
 import assign from 'lodash/assign';
+
+import { State } from 'models/friends';
 
 // Action Types
 
@@ -14,7 +17,7 @@ export const NAME = 'friends';
 
 // Define the initial state for `friends` module
 
-const initialState = {
+const initialState: State = {
   friends: [0, 1, 2, 3, 4],
   friendsById: [
     {
@@ -54,7 +57,7 @@ const initialState = {
  * }
  */
 
-export default function reducer(state = initialState, action = {}) {
+export default function reducer(state: State = initialState, action: any = {}): State {
   switch (action.type) {
     case ADD_FRIEND: {
       const len = state.friends.length ? state.friends.length : 1;
@@ -109,19 +112,19 @@ export default function reducer(state = initialState, action = {}) {
 
 // or in a form of arrow function
 
-const addFriend = (name) => ({
+const addFriend = (name: string) => ({
   type: ADD_FRIEND,
   name
 });
 
-function deleteFriend(id) {
+function deleteFriend(id: number) {
   return {
     type: DELETE_FRIEND,
     id
   };
 }
 
-function starFriend(id) {
+function starFriend(id: number) {
   return {
     type: STAR_FRIEND,
     id
