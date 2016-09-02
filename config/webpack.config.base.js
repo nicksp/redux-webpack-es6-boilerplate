@@ -39,7 +39,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: /src\/client\/assets\/javascripts/,
-        loaders: ['babel']
+        loader: 'babel'
       },
       // Images
       // Inline base64 URLs for <=8k images, direct URLs for the rest

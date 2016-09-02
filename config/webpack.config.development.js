@@ -1,4 +1,3 @@
-const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const config = require('./webpack.config.base');
