@@ -7,6 +7,7 @@ import { State } from 'models/friends';
 
 // Action Types
 
+// Define types in the form of 'npm-module-or-myapp/feature-name/ACTION_TYPE_NAME'
 const ADD_FRIEND = 'redux-app/friends/ADD_FRIEND';
 const STAR_FRIEND = 'redux-app/friends/STAR_FRIEND';
 const DELETE_FRIEND = 'redux-app/friends/DELETE_FRIEND';
@@ -103,19 +104,19 @@ export default function reducer(state: State = initialState, action: any = {}): 
 
 // Action Creators
 
-// function addFriend(name) {
-//   return {
-//     type: ADD_FRIEND,
-//     name
-//   };
-// }
+function addFriend(name: string) {
+  return {
+    type: ADD_FRIEND,
+    name
+  };
+}
 
 // or in a form of arrow function
 
-const addFriend = (name: string) => ({
-  type: ADD_FRIEND,
-  name
-});
+// const addFriend = (name: string) => ({
+//   type: ADD_FRIEND,
+//   name
+// });
 
 function deleteFriend(id: number) {
   return {
@@ -133,7 +134,7 @@ function starFriend(id: number) {
 
 // Selectors
 
-const friends = (state) => state.friends;
+const friends = (state) => state[NAME];
 
 export const selector = createStructuredSelector({
   friends

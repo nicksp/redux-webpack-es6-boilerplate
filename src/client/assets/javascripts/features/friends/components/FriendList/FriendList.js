@@ -22,7 +22,7 @@ export default class FriendList extends Component {
     );
   }
 
-  render () {
+  render() {
     return (
       <ul className="friendList">
         {this.renderList()}

@@ -12,7 +12,7 @@ export default class FriendListItem extends Component {
     starred: PropTypes.bool
   };
 
-  render () {
+  render() {
     return (
       <li className="friendListItem">
         <div className="friendInfos">
