@@ -12,6 +12,8 @@
     "hot",
     "babel",
     "webpack",
+    "sentry",
+    "architecture",
     "webpack-dev-middleware",
     "webpack-hot-middleware",
     "boilerplate",
