@@ -1,3 +1,18 @@
 {
-  "presets": ["es2015", "react", "stage-1"]
+  "presets": [
+    ["es2015", { "modules": false }],
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-decorators-legacy",
+    "transform-flow-strip-types",
+    "react-hot-loader/babel"
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-react-remove-prop-types", "transform-react-constant-elements"]
+    }
+  }
 }

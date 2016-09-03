@@ -1,30 +1,28 @@
 /**
- * This script copies src/index.html into build/index.html
- * This is a good example of using Node and cheerio to do a simple file transformation.
- * It might be useful when we only want to do smth. specific in the built production code.
+ * This script copies src/client/assets/index.html into build/client/index.html
+ * This is useful for our built production code.
  */
 
 /*eslint-disable no-console */
 
-var fs = require('fs');
-var colors = require('colors');
-var cheerio = require('cheerio');
+const fs = require('fs');
+const colors = require('colors');
+const cheerio = require('cheerio');
 
-fs.readFile('src/index.html', 'utf8', (err, markup) => {
+fs.readFile('src/client/assets/index.html', 'utf8', (err, markup) => {
   if (err) {
-    return console.log(err);
+    return console.error(err);
   }
 
   const $ = cheerio.load(markup);
 
-  // Since a separate spreadsheet is only utilized for the production build, need to dynamically add this here.
   $('head').append('<link rel="stylesheet" href="/css/app.css">');
 
-  fs.writeFile('build/index.html', $.html(), 'utf8', function (err) {
+  fs.writeFile('build/client/index.html', $.html(), 'utf8', (err) => {
     if (err) {
-      return console.log(err);
+      return console.error(err);
     }
   });
 
-  console.log('index.html written to /build'.green);
+  console.log('index.html written to /build/client'.green);
 });
