@@ -1,6 +1,6 @@
 {
   "presets": [
-    "es2015-native-modules",
+    ["es2015", { "modules": false }],
     "react",
     "stage-0"
   ],
