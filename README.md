@@ -1,5 +1,9 @@
 # React + Redux w/ ES6 Starter Project
 
+**:tada: A Completely updated version of my initial boilerplate :rocket:**
+
+*Note: If you still want to use a previous version, please checkout `old-original-structure` branch.*
+
 A boilerplate using the power and simplicity of React, Redux, Webpack 2 + HMR, and ES6 + JSX via Babel. Includes `Webpack's Tree Shaking` configuration. It's suitable for scalable applications and organized using the custom variation of [the Ducks pattern](https://github.com/nicksp/ducks-modular-redux) — approach when each module's entry file (`feature-name.js`) contains all of its related constants, actions/action creators, selectors and its reducer.
 
 The provided boilerplate is powered by the following technology stack:
@@ -36,7 +40,7 @@ Support for Node.js > 5
 ### Installation
 
 ```sh
-$ git clone -b scalable-app https://github.com/nicksp/redux-webpack-es6-boilerplate.git app-name
+$ git clone https://github.com/nicksp/redux-webpack-es6-boilerplate.git app-name
 $ cd app-name
 $ npm install
 ```
