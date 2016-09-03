@@ -54,13 +54,16 @@ There are two ways in which you can build and run the web app:
 * Build once for (ready for ***Production***):
   * `$ npm run build`
   * `$ npm run build:serve`
-  * The last command will boot up HTTP server on `3003` port and serve `build/client` directory in a default browser
+
+  The last command will boot up HTTP server on `3003` port and serve `build/client` directory in a default browser
 
 * Hot reloading via webpack middlewares:
   * `$ npm start`
   * Point your browser to http://localhost:3000/, page hot reloads automatically when there are changes
 
 ## Testing
+
+**(TBD)**
 
 To execute all unit tests, use:
 
@@ -86,7 +89,7 @@ $ npm run tunnel # run in a new tab
 
 You will receive a url, for example `https://tbst.localtunnel.me`, that you can share with anyone for as long as your local instance of `lt` remains active. Any requests will be routed to your local service at the specified port.
 
-###Error Tracking and Insights with Sentry
+## Error Tracking and Insights with Sentry
 
 In order to get info on errors that happened in production, we integrate [Sentry](https://sentry.io/for/javascript/) into our application to track errors and get context on what happened.
 
