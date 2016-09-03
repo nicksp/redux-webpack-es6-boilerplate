@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import configureStore  from './store/configureStore';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
 import Redbox from 'redbox-react';
 
 import Root from './Root';
+import configureStore from './store/configureStore';
 
 import 'styles/bootstrap.min.css';
 import 'styles/styles.scss';
